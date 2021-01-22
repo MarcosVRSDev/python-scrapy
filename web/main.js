@@ -16,7 +16,8 @@ fetch("../data.json")
     Object.keys(data).forEach(element => {
       dados.push({
         "label": element,
-        "value": data[element]
+        "value": data[element],
+        "color": generateRandomColor()
       });
     });
   })
@@ -24,9 +25,10 @@ fetch("../data.json")
     dadosJSON[0].values = dados;
 
     nv.addGraph(function () {
-      var chart = nv.models.multiBarChart().x(function (d) {
-        return d.label;
-      })
+      var chart = nv.models.pieChart()
+        .x(function (d) {
+          return d.label;
+        })
         .y(function (d) {
           return d.value;
         })
@@ -36,17 +38,11 @@ fetch("../data.json")
           bottom: 50,
           left: 85
         })
-        .showControls(false)
-        .stacked(false);
-
-      chart.xAxis
-        .axisLabel('Palavras');
-
-      chart.yAxis
-        .tickFormat(d3.format('0f'));
+        .showLabels(false)
+        .showLegend(false);
 
       d3.select('#graphMultiBar svg')
-        .datum(dadosJSON)
+        .datum(dadosJSON[0].values)
         .transition().duration(500)
         .call(chart);
 
@@ -56,3 +52,11 @@ fetch("../data.json")
     });
   });
 
+function generateRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}

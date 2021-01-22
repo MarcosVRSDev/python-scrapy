@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Making a Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
+</head>
+<style>
+  body {
+    background-color: #eeeeee;
+  }
+
+  .graphMultiBar {
+    height: 500px;
+  }
+</style>
+
+<body>
+  <div id="graphMultiBar" class="with-3d-shadow with-transitions graphMultiBar">
+    <svg></svg>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+  <script type="text/javascript" src="../data.json"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>

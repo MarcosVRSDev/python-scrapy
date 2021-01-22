@@ -30,7 +30,9 @@ for i in filelist:
                     d[word] = 1
 
 for key in (dict(sorted(d.items(), key=lambda item: item[1]))).__reversed__():
-    if(key == ""):
+    if(key == "" ):
+        d.pop(key)
+    elif(key.isnumeric()):
         d.pop(key)
 
 sorted_dict = dict(sorted(d.items(),

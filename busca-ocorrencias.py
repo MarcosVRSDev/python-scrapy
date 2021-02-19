@@ -35,9 +35,7 @@ for key in (dict(sorted(d.items(), key=lambda item: item[1]))).__reversed__():
     elif(key.isnumeric()):
         d.pop(key)
 
-sorted_dict = dict(sorted(d.items(),
-                          key=lambda item: item[1],
-                          reverse=True))
+sorted_dict = dict(sorted(d.items(), key=lambda item: item[1], reverse=True))
 
 with open("data.json", "w") as outfile:
     json.dump(sorted_dict, outfile, indent=4)
